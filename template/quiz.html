@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="container">
+<center>
+<form action={% url 'quizzcheck' %}  method="POST">
+    {% csrf_token %}
+    {% if f %}
+    <p style="padding-top:3cm;">Your answer is correct</p>
+    <button><a href="{% url 'quizz' %}">NEXT</a></button>
+    {% elif e %}
+
+    <p style="padding-top:3cm;">Your answer is wrong. Correct answer is {{a}}</p>
+    <button><a href="{% url 'quizz' %}">NEXT</a></button>
+
+    {% elif count %}
+    <h3 style="padding-top:3cm;">RESULT</h3>
+    <p >Your session is over, it took {{elapsed_time}} seconds. </p>
+    <p>you have scored {{score }} out of 10. </p>
+    <p>You {{result}} the session.</p>
+    {% else %}
+      <p style="padding-top:3cm;">{{c}}){{  k.question}}</p>
+      <input style="margin-left: 1cm;" type="radio" name="options" value="{{k.optionA}}"><label>{{k.optionA}}</label>
+      <input style="margin-left: 1cm;" type="radio" name="options" value="{{k.optionB}}"><label >{{k.optionB}}</label>
+      <input style="margin-left: 1cm;" type="radio" name="options" value="{{k.optionC}}"><label >{{k.optionC}}</label>
+      <input style="margin-left: 1cm;" type="radio" name="options" value="{{k.optionD}}"><label>{{k.optionD}}</label><br>
+
+      <input type="submit" value="Submit">
+
+    {% endif %}
+
+</form>
+</center>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+<form method="POST">
+    {% csrf_token %}
+    <center>
+        <div >
+            <p style="padding-top:3cm;">
+                 <h3>Sign up</h3>
+                 <label style="padding-left:61px;"><b>Username:</b></label>
+                 <input type="text" name="username" /><br/></p>
+            <p style="padding-left:61px;">
+                <label> <b>Password:</b></label>
+                <input type="password" name="password1" /><br/>
+            </p>
+            <p>
+                <b> Password confirm:</b>
+                <input type="password" name="password2" /><br/>
+            </p>
+            <p>
+                <input type="submit"/>
+            </p>
+        </div>
+    </center>
+</form>
+{% endblock %}
