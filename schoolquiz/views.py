@@ -52,7 +52,7 @@ def quizz(request):
             return render(request, "quiz.html", {'count':count,'score':score,'result':result,'elapsed_time':elapsed_time})
         if (n <5):
             start_time = request.session['start_time']
-            elapsed_time = time.time() - start_time
+            elapsed_time = round((time.time() - start_time),2)
             result = "failed"
             return render(request, "quiz.html", {'count': count, 'score': score, 'result': result,'elapsed_time':elapsed_time})
     else:
